@@ -1,17 +1,16 @@
-from flashtext.keyword import KeywordProcessor
-import pickle
+import torch
+
 
 # Function that takes loads in our pickled word processor
 # and defines a function for using it. This makes it easy
 # to do these steps together when serving our model.
-def get_keywords_api():
+def model_loader():
     
     # read in pickled word processor. You could also load in
     # other models as this step.
-    keyword_processor = pickle.load(open("processor.pkl", "rb"))
+    model = torch.load(("Model/model_plant.pt"))
+    model.eval()
+    
     
     # Function to apply our model & extract keywords from a 
-    # provided bit of text
-    def keywords_api(keywordProcessor, text, span_info=True): 
-        keywords_found = keywordProcessor.extract_keywords(text, span_info=True)      
-        return keywords_found
+   
