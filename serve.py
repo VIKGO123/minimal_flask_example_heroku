@@ -10,6 +10,7 @@ def model_loader():
     # other models as this step.
     model = torch.load(("Model/model_plant.pt"))
     model.eval()
+    return model
     
     
     # Function to apply our model & extract keywords from a 
