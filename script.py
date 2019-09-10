@@ -47,7 +47,7 @@ def transform_image(image_bytes):
     image = Image.open(io.BytesIO(image_bytes))
     return my_transforms(image).unsqueeze(0)
 
-@app.route('/')
+@app.route('/index')
 def index():
 	#initModel()
 	#render out pre-built HTML file right on the index page
