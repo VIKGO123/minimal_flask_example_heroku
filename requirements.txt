@@ -1,2 +1,13 @@
 gunicorn
 flask
+torch
+torchvision
+json
+scipy
+serve
+numpy
+io
+re
+sys
+os
+PIL
