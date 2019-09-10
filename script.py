@@ -55,47 +55,47 @@ def index():
 
 
 
-@app.route('/upload', methods=['GET', 'POST'])
-def upload():
-    if request.method == 'POST' and 'photo' in request.files:
-        filename = photos.save(request.files['photo'])
-        os.rename('./'+filename,'./'+'output.png')
+# @app.route('/upload', methods=['GET', 'POST'])
+# def upload():
+#     if request.method == 'POST' and 'photo' in request.files:
+#         filename = photos.save(request.files['photo'])
+#         os.rename('./'+filename,'./'+'output.png')
 
-	print "debug"
-	#read the image into memory
-	img = image.load_img('./output.png', target_size=(224, 224))
-	#compute a bit-wise inversion so black becomes white and vice versa
+# 	print "debug"
+# 	#read the image into memory
+# 	img = image.load_img('./output.png', target_size=(224, 224))
+# 	#compute a bit-wise inversion so black becomes white and vice versa
 	
-	tensor = transform_image(img)
-	img=model(tensor)
-	_, predicted = torch.max(img, 1)
-	ans=(int)predicted
-	
-	
+# 	tensor = transform_image(img)
+# 	img=model(tensor)
+# 	_, predicted = torch.max(img, 1)
+# 	ans=(int)predicted
 	
 	
-# 	x = image.img_to_array(img)
-# 	#make it the right size
-# 	x = np.expand_dims(x, axis=0)
-# 	#imshow(x)
-# 	#convert to a 4D tensor to feed into our model
-# 	x = preprocess_input(x)
-# 	print "debug2"
-# 	#in our computation graph
-# 	with graph.as_default():
-# 		#perform the prediction
-# 		out = model.predict(x)
-# 		u = decode_predictions(out, top=3)[0]
-    	s1 = ans
-	s2 = ans*100
-# 		s3 = u[1][1]
-# 		s4 = u[1][2]*100
-# 		s5 = u[2][1]
-# 		s6 = u[2][2]*100
-# 		print(s1,s2,s3)
-# 		print "debug3"
-		#convert the response to a string
-	return render_template("index2.html",s1 = s1, s2 = s2)
+	
+	
+# # 	x = image.img_to_array(img)
+# # 	#make it the right size
+# # 	x = np.expand_dims(x, axis=0)
+# # 	#imshow(x)
+# # 	#convert to a 4D tensor to feed into our model
+# # 	x = preprocess_input(x)
+# # 	print "debug2"
+# # 	#in our computation graph
+# # 	with graph.as_default():
+# # 		#perform the prediction
+# # 		out = model.predict(x)
+# # 		u = decode_predictions(out, top=3)[0]
+#     	s1 = ans
+# 	s2 = ans*100
+# # 		s3 = u[1][1]
+# # 		s4 = u[1][2]*100
+# # 		s5 = u[2][1]
+# # 		s6 = u[2][2]*100
+# # 		print(s1,s2,s3)
+# # 		print "debug3"
+# 		#convert the response to a string
+# 	return render_template("index2.html",s1 = s1, s2 = s2)
 
 
 if __name__ == "__main__":
