@@ -4,8 +4,4 @@ torch
 torchvision
 scipy
 numpy
-io
-re
-sys
-os
-PIL
+
