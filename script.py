@@ -1,51 +1,51 @@
 import json
 import torch
 from flask import Flask, render_template, request
-from flask_uploads import UploadSet, configure_uploads,IMAGES
-from scipy.misc import imsave, imread, imresize
-from flask import Flask, request
-from serve import model_loader
-import numpy as np
+# from flask_uploads import UploadSet, configure_uploads,IMAGES
+# from scipy.misc import imsave, imread, imresize
+# from flask import Flask, request
+# from serve import model_loader
+# import numpy as np
 
-import io
-import json
+# import io
+# import json
 
-from torchvision import models
-import torchvision.transforms as transforms
-from PIL import Image
-from flask import Flask, jsonify, request
+# from torchvision import models
+# import torchvision.transforms as transforms
+# from PIL import Image
+# from flask import Flask, jsonify, request
 
 
-import re
-#system level operations (like loading files)
-import sys
-#for reading operating system data
-import os
+# import re
+# #system level operations (like loading files)
+# import sys
+# #for reading operating system data
+# import os
 
-# I've commented out the last import because it won't work in kernels, 
-# but you should uncomment it when we build our app tomorrow
+# # I've commented out the last import because it won't work in kernels, 
+# # but you should uncomment it when we build our app tomorrow
 
-# create an instance of Flask
-app = Flask(__name__)
+# # create an instance of Flask
+# app = Flask(__name__)
 
-# load our pre-trained model & function
-model = model_loader()
-model.eval()
+# # load our pre-trained model & function
+# model = model_loader()
+# model.eval()
 
-photos = UploadSet('photos', IMAGES)
+# photos = UploadSet('photos', IMAGES)
 
-app.config['UPLOADED_PHOTOS_DEST'] = '.'
-configure_uploads(app, photos)
+# app.config['UPLOADED_PHOTOS_DEST'] = '.'
+# configure_uploads(app, photos)
 
-def transform_image(image_bytes):
-    my_transforms = transforms.Compose([transforms.Resize(255),
-                                        transforms.CenterCrop(224),
-                                        transforms.ToTensor(),
-                                        transforms.Normalize(
-                                            [0.485, 0.456, 0.406],
-                                            [0.229, 0.224, 0.225])])
-    image = Image.open(io.BytesIO(image_bytes))
-    return my_transforms(image).unsqueeze(0)
+# def transform_image(image_bytes):
+#     my_transforms = transforms.Compose([transforms.Resize(255),
+#                                         transforms.CenterCrop(224),
+#                                         transforms.ToTensor(),
+#                                         transforms.Normalize(
+#                                             [0.485, 0.456, 0.406],
+#                                             [0.229, 0.224, 0.225])])
+#     image = Image.open(io.BytesIO(image_bytes))
+#     return my_transforms(image).unsqueeze(0)
 
 @app.route('/index')
 def index():
