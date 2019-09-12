@@ -48,7 +48,7 @@ app = Flask(__name__)
 #     return my_transforms(image).unsqueeze(0)
 
 @app.route('/')
-def index():
+def home():
 	#initModel()
 	#render out pre-built HTML file right on the index page
 	return render_template("index.html")
