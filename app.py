@@ -20,7 +20,7 @@ from flask import Flask, render_template,jsonify
 # #system level operations (like loading files)
 # import sys
 # #for reading operating system data
-# import os
+import os
 
 # # I've commented out the last import because it won't work in kernels, 
 # # but you should uncomment it when we build our app tomorrow
@@ -102,6 +102,6 @@ if __name__ == "__main__":
 	#decide what port to run the app in
 # 	port = int(os.environ.get('PORT', 5000))
 	#run the app locally on the givn port
-	app.run(debug=True)
+	app.run(debug=False,port=os.getenv('PORT',5000))
 	#optional if we want to run in debugging mode
 	#app.run(debug=True)
