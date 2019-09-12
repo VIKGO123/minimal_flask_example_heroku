@@ -1,6 +1,6 @@
-import json
-import torch
-from flask import Flask, render_template, request
+
+# import torch
+from flask import Flask, render_template,jsonify
 # from flask_uploads import UploadSet, configure_uploads,IMAGES
 # from scipy.misc import imsave, imread, imresize
 # from flask import Flask, request
