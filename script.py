@@ -26,7 +26,7 @@ from flask import Flask, render_template, request
 # # but you should uncomment it when we build our app tomorrow
 
 # # create an instance of Flask
-# app = Flask(__name__)
+app = Flask(__name__)
 
 # # load our pre-trained model & function
 # model = model_loader()
@@ -47,7 +47,7 @@ from flask import Flask, render_template, request
 #     image = Image.open(io.BytesIO(image_bytes))
 #     return my_transforms(image).unsqueeze(0)
 
-@app.route('/index')
+@app.route('/')
 def index():
 	#initModel()
 	#render out pre-built HTML file right on the index page
